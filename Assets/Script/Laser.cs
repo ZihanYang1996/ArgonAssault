@@ -9,7 +9,7 @@ public class Laser : MonoBehaviour
     ParticleSystem[] lasers = new ParticleSystem[2];
     Transform[] laserTransforms = new Transform[2];
     Vector3 mousePosition;
-    [SerializeField] float laserDistance = 100f;
+    [Tooltip("How far the laser is pointing to")] [SerializeField] float laserDistance = 100f;
 
     void Awake()
     {
