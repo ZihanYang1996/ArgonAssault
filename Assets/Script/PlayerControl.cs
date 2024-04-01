@@ -7,6 +7,9 @@ using UnityEngine.UIElements;
 public class PlayerControl : MonoBehaviour
 {
     Vector2 move;
+    Laser laser;
+
+
     
     [SerializeField] float horizontalSpeed = 20f;
     [SerializeField] float verticalSpeed = 20f;
@@ -23,15 +26,16 @@ public class PlayerControl : MonoBehaviour
     Vector2 smoothInputVelocity = Vector2.zero;
 
 
-    void Start()
+    void Awake()
     {
+        laser = gameObject.GetComponent<Laser>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
         smoothInput();
+        Move();
         Rotate();
     }
 
@@ -61,5 +65,17 @@ public class PlayerControl : MonoBehaviour
         float roll = currentInput.x * -controlRollFactor;
 
         transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
+    }
+
+    void OnFire(InputValue value)
+    {
+        if (value.isPressed)
+        {
+            laser.Fire();
+        }
+        else
+        {
+            laser.StopFire();
+        }
     }
 }
