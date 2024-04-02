@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0e228fa7855a8b342b932d61fb6edbb2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -142,6 +142,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 3200836327345539238, guid: d2c744d78799a47488ef7b2f880fbb22, type: 3}
+  scoreValue: 1
+  health: 20
+  hitFlashDuration: 0.1
+  hitFlashColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!54 &3228337606752406302
 Rigidbody:
   m_ObjectHideFlags: 0

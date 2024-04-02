@@ -6,6 +6,12 @@ using UnityEngine.SceneManagement;
 public class CollisionHandler : MonoBehaviour
 {
     [SerializeField] GameObject explosion;
+    GameObject InitiatedAtRuntime;
+
+    void Awake()
+    {
+        InitiatedAtRuntime = GameObject.Find("InitiatedAtRuntime");
+    }
 
     void OnCollisionEnter(Collision other)
     {
@@ -18,6 +24,7 @@ public class CollisionHandler : MonoBehaviour
     {
         gameObject.GetComponent<MeshRenderer>().enabled = false;
         GameObject explosionInstance = Instantiate(explosion, location, Quaternion.identity);
+        explosionInstance.transform.parent = InitiatedAtRuntime.transform;
         ParticleSystem explosionParticleSystem = explosionInstance.GetComponent<ParticleSystem>();
         Destroy(explosionInstance, explosionParticleSystem.main.duration + explosionParticleSystem.main.startLifetime.constantMax);
     }
